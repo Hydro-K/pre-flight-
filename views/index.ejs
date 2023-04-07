@@ -1,0 +1,50 @@
+
+ <!DOCTYPE html>
+ <html>
+   <head>
+     <meta charset="UTF-8">
+     <title>My Checklist</title>
+     <style>
+      body{
+        display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      color: #ffffff;
+      background-color: black;
+      }
+      
+      ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      }</style>
+   <body>
+     <div class="container">
+       <h1>PreFlight+ checklist</h1>
+       <ul>
+         <% items.forEach(function(item) { %>
+           <li>
+             <input type="checkbox" name="item" value="<%= item %>">
+             <%= item %>
+           </li>
+         <% }); %>
+       </ul>
+     </div>
+     <script>
+       // Get all the checkboxes
+       var checkboxes = document.querySelectorAll('input[type=checkbox]');
+ 
+       // Add a change event listener to each checkbox
+       checkboxes.forEach(function(checkbox) {
+         checkbox.addEventListener('change', function() {
+           // If all the checkboxes are checked, redirect to the success page
+           if (document.querySelectorAll('input[type=checkbox]:checked').length === checkboxes.length) {
+             window.location.href = '/success';
+           }
+         });
+       });
+     </script>
+   </body>
+ </html>
+ 
